@@ -72,7 +72,25 @@ shop.addEventListener('click', async () => {
       <div class="col-5">
         <strong><h3 class="d-flex justify-content-left">${arregloBuscado.nombre}</h3></strong>
         <h5 class="d-flex justify-content-left">$ ${arregloBuscado.precio}.00</h5>
-        <a href="#" onClick="buyNow(${id})" class="btn btn-dark d-flex justify-content-center">ADD TO CART</a>
+        <span class="d-flex mt-4">Size</span>
+        <div class="d-flex mt-3">
+            <a Style="text-decoration: none; color:black;" href="#" class="d-row p-3">
+            S
+            </a>
+            <a Style="text-decoration: none; color:black;" href="#" class="d-row p-3">
+            M
+            </a>
+            <a Style="text-decoration: none; color:black;" href="#" class="d-row p-3">
+            L
+            </a>
+            <a Style="text-decoration: none; color:black;" href="#" class="d-row p-3">
+            XL
+            </a>
+            <a Style="text-decoration: none; color:black;" href="#" class="d-row p-3">
+            XXL
+            </a>
+        </div>
+        <a href="#" onClick="buyNow(${id})" class="btn btn-dark d-flex justify-content-center mt-4">ADD TO CART</a>
         <a href="#" onClick="Car(${id})" class="btn btn-primary d-flex justify-content-center mt-2">BUY IT NOW</a>
         <span class="d-flex justify-content-left mt-2"> ${arregloBuscado.descripcion}</span>
       </div>
