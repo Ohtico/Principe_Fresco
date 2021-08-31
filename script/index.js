@@ -16,10 +16,13 @@ profile.addEventListener('click', async () => {
                                <img src="${imagenPpal}" class="card-img-top mt-3" alt="...">
                                <div class="card-body">
                                <h5 class="card-title d-flex justify-content-center">${nombre}</h5>
-                               <a href="#" data-id="${id}" onClick="buy()" class="btn btn-primary d-flex justify-content-center">BUY IT</a>
+                               <a href="#" onClick="buy(${id})" class="btn btn-primary d-flex justify-content-center">BUY IT</a>
                                </div></div> 
        `
-
     })
 })
+
+const buy = (e) => {
+    localStorage.setItem('id',e);
+ }
 
