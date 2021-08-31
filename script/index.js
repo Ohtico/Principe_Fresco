@@ -1,18 +1,18 @@
-let producto = document.getElementById('profile')
-let profile = document.getElementById('profile-tab')
+let producto = document.getElementById('collecttion')
+let shop = document.getElementById('shop')
+let coleccion = document.getElementById('productos')
 let acticulo = 'http://localhost:4000/articulos'
+let id = 0;
 
 
-
-profile.addEventListener('click', async () => {
-
+coleccion.addEventListener('click', async () => {
+    producto.innerHTML=''
     let rest = await fetch(acticulo)
     let data = await rest.json() 
-    console.log(data);
-
     data.forEach(pes => {
        const {nombre, imagenPpal, id} = pes;
-       producto.innerHTML += `<div class="container card" style="width: 18rem;" id="cardProducto">
+       
+       producto.innerHTML += `<div class="container card" style="width: 14rem;" id="cardProducto">
                                <img src="${imagenPpal}" class="card-img-top mt-3" alt="...">
                                <div class="card-body">
                                <h5 class="card-title d-flex justify-content-center">${nombre}</h5>
@@ -23,6 +23,16 @@ profile.addEventListener('click', async () => {
 })
 
 const buy = (e) => {
-    localStorage.setItem('id',e);
+    // localStorage.setItem('id',e);
+
+    id = e;
  }
 
+shop.addEventListener('click', async() => {
+    producto.innerHTML=''
+    let rest = await fetch(acticulo)
+    let data = await rest.json()
+
+    let arregloBuscado = data.find(traer => traer.id == id)
+    console.log(arregloBuscado.nombre);
+})
