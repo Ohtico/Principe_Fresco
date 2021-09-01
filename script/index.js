@@ -1,5 +1,5 @@
 let producto = document.getElementById('collecttion')
-let shop = document.getElementById('shop')
+let shop = document.querySelector('.shop')
 let coleccion = document.getElementById('productos')
 let canvas = document.getElementById('offcanvasExample')
 let acticulo = 'http://localhost:4000/articulos'
@@ -7,12 +7,12 @@ let id = 0;
 
 
 coleccion.addEventListener('click', async () => {
-    producto.innerHTML=''
+    producto.innerHTML = ''
     let rest = await fetch(acticulo)
-    let data = await rest.json() 
+    let data = await rest.json()
     data.forEach(pes => {
-       const {nombre, imagenPpal, id} = pes;
-       producto.innerHTML += `<div class="container card" style="width: 14rem;" id="cardProducto">
+        const { nombre, imagenPpal, id } = pes;
+        producto.innerHTML += `<div class="container card" style="width: 14rem;" id="cardProducto">
                                <img src="${imagenPpal}" class="card-img-top mt-3" alt="...">
                                <div class="card-body">
                                <h5 class="card-title d-flex justify-content-center"><strong>${nombre}</strong></h5>
@@ -29,20 +29,18 @@ const buy = (e) => {
         showConfirmButton: false,
         timer: 1200
     })
-
-console.log(e);
     id = e;
- }
+}
 
 shop.addEventListener('click', async () => {
-    producto.innerHTML='<strong>Buy Products - Empty</strong>'
+    producto.innerHTML = '<strong>Buy Products - Empty</strong>'
     let rest = await fetch(acticulo)
     let data = await rest.json()
     let arregloBuscado = data.find(traer => traer.id == id)
     let imagenPpal = arregloBuscado.imagenPpal;
     let imagen1 = arregloBuscado.imagen1;
     let imagen2 = arregloBuscado.imagen2;
-  
+
     producto.innerHTML = `<div class="container">
                           <div class="row">
                           <div class="col-2">
@@ -69,20 +67,20 @@ shop.addEventListener('click', async () => {
                           <a href="#" onClick="Car(${id})" class="btn btn-dark d-flex justify-content-center mt-4">ADD TO CART</a>
                           <a href="#" onClick="buyNow(${id})" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" class="btn btn-primary d-flex justify-content-center mt-2">BUY IT NOW</a>
                           <span class="d-flex justify-content-left mt-2"> ${arregloBuscado.descripcion}</span></div></div>`
-    
+
 })
 
 const change = (p) => {
     document.getElementById('imageChange').setAttribute('src', p);
 }
 
-async function buyNow(id){
+async function buyNow(id) {
 
     let rest = await fetch(acticulo);
     let data = await rest.json()
     let arregloBuscado = data.find(traer => traer.id == id)
     canvas.innerHTML = '';
-    canvas.innerHTML = `<div class="offcanvas-header">
+    canvas.innerHTML += `<div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
     <button type="button" class="btn-close text-reset float-end" data-bs-dismiss="offcanvas"
         aria-label="Close"></button>
@@ -92,11 +90,15 @@ async function buyNow(id){
     <div class="container">
         <div class="row">
           <div class="col-9">
-            <div class="card mt-3" style="max-width: 240px; max-height: 140px;">
+            <div class="card mt-3 border-0" style="max-width: 240px; max-height: 140px;">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="${arregloBuscado.imagenPpal}" style="height: 80%; width: 100%"
+<<<<<<< HEAD
                             class="img-fluid rounded-start mt-1 ms-1" alt="...">
+=======
+                            class="img-fluid rounded-start border-0 mt-1 ms-1" alt="...">
+>>>>>>> master
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -107,22 +109,46 @@ async function buyNow(id){
                 </div>
                 
             </div>
+            </div>
+            <div class="col mt-4 text-center">
+            <input type="number" value="1" min="0" max="4"style="width: 60%">
+             <hr class="mt-4 text-dark">
+            <a href="#" class="shop" Style="text-decoration: none; color:black;"><strong>Remove</strong> </a>
           </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+          <div class="col">
+          <strong>Subtotal</strong>
+            
+          </div>
+<<<<<<< HEAD
           <div class="col mt-3">
           <div class="input-group input-group-sm mb-3">
           <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
           <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             </div>
+=======
+          <div class="col d-flex justify-content-center me-0">
+          $ ${arregloBuscado.precio}.00
+>>>>>>> master
           </div>
         </div>
-
-
-
-    
-    
-</div>
+        <a href="#" onclick="comprado()" class="btn btn-primary d-flex justify-content-center mt-4 p-3"><strong>CHECK OUT</strong></a>
 </div>`
-    
 
+}
 
+function comprado(){
+    swal.fire({
+        title: 'Purchase Confirmed',
+        showConfirmButton: true,
+        confirmButtonText: 'Accept',
+        background: `rgba(238, 114, 52 )`
+    }).then((result) => {
+        if(result.isConfirmed){
+            location.reload()
+        }
+    })
 }
