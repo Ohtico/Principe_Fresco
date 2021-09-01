@@ -95,7 +95,7 @@ async function buyNow(id){
             <div class="card mt-3" style="max-width: 240px; max-height: 140px;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="${arregloBuscado.imagenPpal}" style="height: 90%; width: 100%"
+                        <img src="${arregloBuscado.imagenPpal}" style="height: 80%; width: 100%"
                             class="img-fluid rounded-start mt-1 ms-1" alt="...">
                     </div>
                     <div class="col-md-8">
@@ -109,7 +109,10 @@ async function buyNow(id){
             </div>
           </div>
           <div class="col mt-3">
-           hola
+          <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
           </div>
         </div>
 
