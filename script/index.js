@@ -5,8 +5,8 @@ let canvas = document.getElementById('offcanvasExample')
 let acticulo = 'http://localhost:4000/articulos'
 let id = 0;
 
-
 coleccion.addEventListener('click', async () => {
+    console.log('')
     producto.innerHTML = ''
     let rest = await fetch(acticulo)
     let data = await rest.json()
@@ -82,7 +82,7 @@ async function buyNow(id) {
     canvas.innerHTML = '';
     canvas.innerHTML += `<div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
-    <button type="button" class="btn-close text-reset float-end" data-bs-dismiss="offcanvas"
+    <button id="cerrarCanvas" type="button" class="btn-close text-reset float-end" data-bs-dismiss="offcanvas"
         aria-label="Close"></button>
 </div>
 <div class="offcanvas-body">
@@ -107,9 +107,9 @@ async function buyNow(id) {
             </div>
             </div>
             <div class="col mt-4 text-center">
-            <input type="number" value="1" min="0" max="4"style="width: 60%">
+            <input id="cant" type="number" value="1" min="0" max="4"style="width: 60%">
              <hr class="mt-4 text-dark">
-            <a href="#" onclick="comprado()" class="shop" Style="text-decoration: none; color:black;"><strong>Remove</strong> </a>
+            <a href="#" onclick="cerrarCanvas()" id="volver" Style="text-decoration: none; color:black;"><strong>Remove</strong> </a>
           </div>
         </div>
     </div>
@@ -126,6 +126,7 @@ async function buyNow(id) {
         <a href="#" onclick="comprado()" class="btn btn-primary d-flex justify-content-center mt-4 p-3"><strong>CHECK OUT</strong></a>
 </div>`
 
+
 }
 
 function comprado(){
@@ -139,4 +140,18 @@ function comprado(){
             location.reload()
         }
     })
+}
+
+function cerrarCanvas () {
+    let cantidad = document.getElementById('cant').value;
+    console.log(cantidad);
+    if(cantidad>1){
+        cantidad--
+        console.log(cantidad)
+    }
+
+    // console.log(document.getElementById('cerrarCanvas'));
+    
+    // document.getElementById('volver').setAttribute('data-bs-dismiss', 'offcanvas');
+    // console.log(document.getElementById('volver'));
 }
