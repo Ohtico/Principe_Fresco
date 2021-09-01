@@ -91,7 +91,7 @@ async function buyNow(id){
 
     <div class="container">
         <div class="row">
-          <div class="col">
+          <div class="col-9">
             <div class="card mt-3" style="max-width: 240px; max-height: 140px;">
                 <div class="row g-0">
                     <div class="col-md-4">
