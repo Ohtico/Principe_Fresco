@@ -94,11 +94,7 @@ async function buyNow(id) {
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="${arregloBuscado.imagenPpal}" style="height: 80%; width: 100%"
-<<<<<<< HEAD
-                            class="img-fluid rounded-start mt-1 ms-1" alt="...">
-=======
                             class="img-fluid rounded-start border-0 mt-1 ms-1" alt="...">
->>>>>>> master
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -113,7 +109,7 @@ async function buyNow(id) {
             <div class="col mt-4 text-center">
             <input type="number" value="1" min="0" max="4"style="width: 60%">
              <hr class="mt-4 text-dark">
-            <a href="#" class="shop" Style="text-decoration: none; color:black;"><strong>Remove</strong> </a>
+            <a href="#" onclick="comprado()" class="shop" Style="text-decoration: none; color:black;"><strong>Remove</strong> </a>
           </div>
         </div>
     </div>
@@ -123,16 +119,8 @@ async function buyNow(id) {
           <strong>Subtotal</strong>
             
           </div>
-<<<<<<< HEAD
-          <div class="col mt-3">
-          <div class="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-            </div>
-=======
           <div class="col d-flex justify-content-center me-0">
           $ ${arregloBuscado.precio}.00
->>>>>>> master
           </div>
         </div>
         <a href="#" onclick="comprado()" class="btn btn-primary d-flex justify-content-center mt-4 p-3"><strong>CHECK OUT</strong></a>
