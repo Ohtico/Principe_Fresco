@@ -32,7 +32,7 @@
             </ul>
             <ul class=" me-3">
                 <li class="nav-item  d-flex float-end">
-                    <a href="#"><i class="material-icons text-muted ms-4">shopping_bag</i></a> 
+                    <a href="#"><i class="material-icons text-muted ms-4">shopping_bag</i></a>
                 </li>
                 <li class="nav-item d-flex float-end">
                     <a href="#"><i class="material-icons text-muted ">person_outline</i></a>
@@ -41,19 +41,46 @@
         </div>
     </nav>
 
-<div class="container d-flex justify-content-center flex-wrap mt-4" id="collecttion">
-        <img style="width:80%;" src="https://res.cloudinary.com/df8qzqymf/image/upload/v1630447584/cover_s0unen.png" alt="" srcset="">
-</div>
+    <div class="container d-flex justify-content-center flex-wrap mt-4" id="collecttion">
+        <img style="width:80%;" src="https://res.cloudinary.com/df8qzqymf/image/upload/v1630447584/cover_s0unen.png"
+            alt="" srcset="">
+    </div>
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    
-  </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+            <button type="button" class="btn-close text-reset float-end" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="card mt-3" style="max-width: 240px; max-height: 140px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="${arregloBuscado.imagenPpal}" style="height: 90%; width: 100%"
+                            class="img-fluid rounded-start mt-1 ms-1" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">${arregloBuscado.nombre}</h5>
+                            <p class="card-text">$ ${arregloBuscado.precio}.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col float-end">
+                        hola
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./script/index.js"></script>
 </body>
 

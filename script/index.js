@@ -76,32 +76,31 @@ const change = (p) => {
     document.getElementById('imageChange').setAttribute('src', p);
 }
 
-async function buyNow(id){
+// async function buyNow(id){
 
-    let rest = await fetch(acticulo);
-    let data = await rest.json()
-    let arregloBuscado = data.find(traer => traer.id == id)
-    canvas.innerHTML = '';
-    canvas.innerHTML = `<div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">${arregloBuscado.nombre}</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div>
-      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-    </div>
-    <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
-    </div>
-  </div>`
+//     let rest = await fetch(acticulo);
+//     let data = await rest.json()
+//     let arregloBuscado = data.find(traer => traer.id == id)
+//     canvas.innerHTML = '';
+//     canvas.innerHTML = `<div class="offcanvas-header">
+//                         <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+//                         <button type="button" class="btn-close text-reset float-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+//                         </div>
+//                         <div class="offcanvas-body">
+//                         <div class="card mt-3" style="max-width: 240px; max-height: 140px;">
+//                         <div class="row g-0">
+//                         <div class="col-md-4">
+//                         <img src="${arregloBuscado.imagenPpal}" style="height: 90%; width: 100%" class="img-fluid rounded-start mt-1 ms-1" alt="..."></div>
+//                         <div class="col-md-8">
+//                         <div class="card-body">
+//                         <h5 class="card-title">${arregloBuscado.nombre}</h5>
+//                         <p class="card-text">$ ${arregloBuscado.precio}.00</p>
+//                         </div>
+//                         </div>
+//                         </div>
+//                         </div>
+//                         </div>`
     
 
 
-}
+// }
