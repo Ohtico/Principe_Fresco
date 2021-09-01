@@ -1,7 +1,8 @@
 let producto = document.getElementById('collecttion')
-let shop = document.querySelector('.shop')
+let shop = document.getElementById('shop')
 let coleccion = document.getElementById('productos')
 let canvas = document.getElementById('offcanvasExample')
+let car = document.getElementById('car')
 let acticulo = 'http://localhost:4000/articulos'
 let id = 0;
 
@@ -109,7 +110,7 @@ async function buyNow(id) {
             <div class="col mt-4 text-center">
             <input type="number" value="1" min="0" max="4"style="width: 60%">
              <hr class="mt-4 text-dark">
-            <a href="#" class="shop" Style="text-decoration: none; color:black;"><strong>Remove</strong> </a>
+            <a href="#" id="shop" Style="text-decoration: none; color:black;"><strong>Remove</strong> </a>
           </div>
         </div>
     </div>
@@ -140,3 +141,24 @@ function comprado(){
         }
     })
 }
+car.addEventListener('click', () => {
+    producto.innerHTML = '';
+    producto.innerHTML = `<div class="container mt-4">
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Referencia</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+                <tfoot >
+                <td scope="row" class="m-4 fs-3"> <a  class="btn btn-warning" onclick="pagar(pagar)">Pagar</a> <a  class="btn btn-danger" onclick="limpiar()">Limpiar Carrito</a></td><td>' + "Total a Pagar:" + '</td><td>' + pagar + '</td><td>' + pesos + '</td>
+                </tfoot>
+                </table>
+                </div>`
+})
