@@ -83,23 +83,42 @@ async function buyNow(id){
     let arregloBuscado = data.find(traer => traer.id == id)
     canvas.innerHTML = '';
     canvas.innerHTML = `<div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
-                        <button type="button" class="btn-close text-reset float-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                        <div class="card mt-3" style="max-width: 240px; max-height: 140px;">
-                        <div class="row g-0">
-                        <div class="col-md-4">
-                        <img src="${arregloBuscado.imagenPpal}" style="height: 90%; width: 100%" class="img-fluid rounded-start mt-1 ms-1" alt="..."></div>
-                        <div class="col-md-8">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+    <button type="button" class="btn-close text-reset float-end" data-bs-dismiss="offcanvas"
+        aria-label="Close"></button>
+</div>
+<div class="offcanvas-body">
+
+    <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card mt-3" style="max-width: 240px; max-height: 140px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="${arregloBuscado.imagenPpal}" style="height: 90%; width: 100%"
+                            class="img-fluid rounded-start mt-1 ms-1" alt="...">
+                    </div>
+                    <div class="col-md-8">
                         <div class="card-body">
-                        <h5 class="card-title">${arregloBuscado.nombre}</h5>
-                        <p class="card-text">$ ${arregloBuscado.precio}.00</p>
+                            <h5 class="card-title">${arregloBuscado.nombre}</h5>
+                            <p class="card-text">$ ${arregloBuscado.precio}.00</p>
                         </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>`
+                    </div>
+                </div>
+                
+            </div>
+          </div>
+          <div class="col mt-3">
+           hola
+          </div>
+        </div>
+
+
+
+    
+    
+</div>
+</div>`
     
 
 
