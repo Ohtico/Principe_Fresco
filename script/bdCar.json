@@ -1,0 +1,32 @@
+{
+  "carrito": [
+    {
+      "nombre": "Fresh Sweatshirt Men",
+      "imagenPpal": "https://res.cloudinary.com/df8qzqymf/image/upload/v1630422016/Frame_14_bs5ecb.png",
+      "precio": 60,
+      "cantidad": 1,
+      "id": 1
+    },
+    {
+      "nombre": "Fresh Sweatshirt Men",
+      "imagenPpal": "https://res.cloudinary.com/df8qzqymf/image/upload/v1630422016/Frame_14_bs5ecb.png",
+      "precio": 60,
+      "cantidad": 1,
+      "id": 2
+    },
+    {
+      "nombre": "Crown Sweatshirt Men",
+      "imagenPpal": "https://res.cloudinary.com/df8qzqymf/image/upload/v1630421976/Rectangle_1_zgjflg.png",
+      "precio": 85,
+      "cantidad": 1,
+      "id": 3
+    },
+    {
+      "nombre": "Crown Sweatshirt Men",
+      "imagenPpal": "https://res.cloudinary.com/df8qzqymf/image/upload/v1630421976/Rectangle_1_zgjflg.png",
+      "precio": 85,
+      "cantidad": 1,
+      "id": 4
+    }
+  ]
+}

@@ -2,8 +2,10 @@ let producto = document.getElementById('collecttion')
 let shop = document.getElementById('shop')
 let coleccion = document.getElementById('productos')
 let canvas = document.getElementById('offcanvasExample')
+
 let car = document.getElementById('car')
-let acticulo = 'http://localhost:4000/articulos'
+let acticulo = 'http://localhost:4000/articulos';
+let cosasCompradas = 'http://localhost:4001/carrito';
 let id = 0;
 
 
@@ -82,83 +84,123 @@ async function buyNow(id) {
     let arregloBuscado = data.find(traer => traer.id == id)
     canvas.innerHTML = '';
     canvas.innerHTML += `<div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
-    <button type="button" class="btn-close text-reset float-end" data-bs-dismiss="offcanvas"
-        aria-label="Close"></button>
-</div>
-<div class="offcanvas-body">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+                        <button type="button" class="btn-close text-reset float-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
 
-    <div class="container">
-        <div class="row">
-          <div class="col-9">
-            <div class="card mt-3 border-0" style="max-width: 240px; max-height: 140px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
+                        <div class="container">
+                        <div class="row">
+                        <div class="col-9">
+                        <div class="card mt-3 border-0" style="max-width: 240px; max-height: 140px;">
+                        <div class="row g-0">
+                        <div class="col-md-4">
                         <img src="${arregloBuscado.imagenPpal}" style="height: 80%; width: 100%"
                             class="img-fluid rounded-start border-0 mt-1 ms-1" alt="...">
-                    </div>
-                    <div class="col-md-8">
+                        </div>
+                        <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">${arregloBuscado.nombre}</h5>
                             <p class="card-text">$ ${arregloBuscado.precio}.00</p>
                         </div>
-                    </div>
-                </div>
-                
-            </div>
-            </div>
-            <div class="col mt-4 text-center">
-            <input type="number" value="1" min="0" max="4"style="width: 60%">
-             <hr class="mt-4 text-dark">
-            <a href="#" id="shop" Style="text-decoration: none; color:black;"><strong>Remove</strong> </a>
-          </div>
-        </div>
-    </div>
-    <div class="container mt-4">
-        <div class="row">
-          <div class="col">
-          <strong>Subtotal</strong>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="col mt-4 text-center">
+                        <input type="number" value="1" min="0" max="4"style="width: 60%">
+                        <hr class="mt-4 text-dark">
+                        <a href="#" id="shop" Style="text-decoration: none; color:black;"><strong>Remove</strong> </a>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="container mt-4">
+                        <div class="row">
+                        <div class="col">
+                        <strong>Subtotal</strong>
             
-          </div>
-          <div class="col d-flex justify-content-center me-0">
-          $ ${arregloBuscado.precio}.00
-          </div>
-        </div>
-        <a href="#" onclick="comprado()" class="btn btn-primary d-flex justify-content-center mt-4 p-3"><strong>CHECK OUT</strong></a>
-</div>`
-
+                        </div>
+                        <div class="col d-flex justify-content-center me-0">$ ${arregloBuscado.precio}.00
+                        </div>
+                        </div>
+                        <a href="#" onclick="comprado()" class="btn btn-primary d-flex justify-content-center mt-4 p-3"><strong>CHECK OUT</strong></a>
+                        </div>`
 }
 
-function comprado(){
+function comprado() {
     swal.fire({
         title: 'Purchase Confirmed',
         showConfirmButton: true,
         confirmButtonText: 'Accept',
         background: `rgba(238, 114, 52 )`
     }).then((result) => {
-        if(result.isConfirmed){
+        if (result.isConfirmed) {
             location.reload()
         }
     })
 }
-car.addEventListener('click', () => {
+
+car.addEventListener('click', async () => {
+
+    let rest = await fetch(cosasCompradas);
+    let data = await rest.json()
+    let pagar = Object.values(data).reduce((acc, { cantidad, precio }) => acc + cantidad * Number(precio), 0)
+    let cantidad = Object.values(data).reduce((acc, { cantidad }) => acc + cantidad, 0)
     producto.innerHTML = '';
     producto.innerHTML = `<div class="container mt-4">
-    <table class="table">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">Referencia</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Cantidad</th>
-                </tr>
-                </thead>
-                <tbody>
+                          <table class="table">
+                          <thead class="table-dark">
+                          <tr>
+                          <th scope="col m-0">Referencia</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Precio</th>
+                          <th scope="col">Cantidad</th>
+                          </tr>
+                          </thead>
+                          <tbody id="cosas">
+                          </tbody>
+                          <tfoot>
+                          <td scope="row" class="m-4 fs-3"> <a  class="btn btn-warning" onclick="yaaaa()">Buy</a> <a  class="btn btn-danger" onclick="limpiar()">Limpiar Carrito</a></td><td></td><td>$ ${pagar}.00</td><td>${cantidad}</td>
+                          </tfoot>
+                          </table>
+                          </div>`
+    let pintarCarro = document.getElementById('cosas')
+    data.forEach(traer => {
+        const { nombre, imagenPpal, precio, } = traer;
+        pintarCarro.innerHTML += `<td scope="row"><img style="height: 20%; width: 20%"  src="${imagenPpal}" alt=""> </td><td>${nombre}</td><td>${precio}</td><td>${1}</td>`
+    })
 
-                </tbody>
-                <tfoot >
-                <td scope="row" class="m-4 fs-3"> <a  class="btn btn-warning" onclick="pagar(pagar)">Pagar</a> <a  class="btn btn-danger" onclick="limpiar()">Limpiar Carrito</a></td><td>' + "Total a Pagar:" + '</td><td>' + pagar + '</td><td>' + pesos + '</td>
-                </tfoot>
-                </table>
-                </div>`
+
 })
+
+async function Car(elementos) {
+    let rest = await fetch(acticulo);
+    let data = await rest.json()
+    let comprado = data.find(traer => traer.id == elementos)
+    // cosasCompradas
+
+    await fetch(cosasCompradas, {
+        method: 'POST',
+        body: JSON.stringify({
+            nombre: comprado.nombre,
+            imagenPpal: comprado.imagenPpal,
+            precio: comprado.precio,
+            cantidad: 1
+        }),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        }
+    })
+}
+function yaaaa(){
+    swal.fire({
+        title: 'Purchase Confirmed',
+        showConfirmButton: true,
+        confirmButtonText: 'Accept',
+        background: `rgba(238, 114, 52 )`
+    }).then((result) => {
+        if (result.isConfirmed) {
+            location.reload()
+        }
+    })
+}
